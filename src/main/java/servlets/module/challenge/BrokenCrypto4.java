@@ -130,16 +130,16 @@ public class BrokenCrypto4 extends HttpServlet {
         // Clamp discount percentages: 0–99 only. 100 % would make cost zero and
         // hand out the result key without a legitimate purchase.
         perCentOffPineapple = Math.min(Math.max(perCentOffPineapple, 0), 99);
-        perCentOffOrange    = Math.min(Math.max(perCentOffOrange,    0), 99);
-        perCentOffApple     = Math.min(Math.max(perCentOffApple,     0), 99);
-        perCentOffBanana    = Math.min(Math.max(perCentOffBanana,    0), 99);
+        perCentOffOrange = Math.min(Math.max(perCentOffOrange, 0), 99);
+        perCentOffApple = Math.min(Math.max(perCentOffApple, 0), 99);
+        perCentOffBanana = Math.min(Math.max(perCentOffBanana, 0), 99);
 
         // Work Out Final Cost (use floating-point division to avoid integer-division
         // truncation that previously made every discount round down to 0 %).
         pineappleCost = (int) Math.round(pineappleCost * (1.0 - perCentOffPineapple / 100.0));
-        appleCost     = (int) Math.round(appleCost     * (1.0 - perCentOffApple     / 100.0));
-        bananaCost    = (int) Math.round(bananaCost    * (1.0 - perCentOffBanana    / 100.0));
-        orangeCost    = (int) Math.round(orangeCost    * (1.0 - perCentOffOrange    / 100.0));
+        appleCost = (int) Math.round(appleCost * (1.0 - perCentOffApple / 100.0));
+        bananaCost = (int) Math.round(bananaCost * (1.0 - perCentOffBanana / 100.0));
+        orangeCost = (int) Math.round(orangeCost * (1.0 - perCentOffOrange / 100.0));
         int finalCost = pineappleCost + appleCost + bananaAmount + orangeCost;
 
         // Output Order
