@@ -52,6 +52,7 @@ public class SessionManagement7SecretQuestion extends HttpServlet {
   private static String levelName = "Session Management Challenge 7 (Secret Question)";
   private static String levelHash =
       "269d55bc0e0ff635dcaeec8533085e5eae5d25e8646dcd4b05009353c9cf9c80";
+
   /**
    * Wrong secret answers seen so far, keyed by the account being recovered. A secret question has
    * far too small an answer space to be guessed at freely, so attempts are counted and the account
