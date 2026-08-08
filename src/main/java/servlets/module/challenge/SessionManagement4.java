@@ -86,13 +86,13 @@ public class SessionManagement4 extends HttpServlet {
         }
         String htmlOutput = null;
         if (theCookie != null) {
-          log.debug("Cookie value: " + theCookie.getValue());
+          log.debug("Cookie present; decoding (twice)");
           // Decode Twice
           byte[] decodedCookieBytes = Base64.decodeBase64(theCookie.getValue());
           String decodedCookie = new String(decodedCookieBytes, "UTF-8");
           decodedCookieBytes = Base64.decodeBase64(decodedCookie.getBytes());
           decodedCookie = new String(decodedCookieBytes, "UTF-8");
-          log.debug("Decoded Cookie: " + decodedCookie);
+          log.debug("Cookie decoded successfully");
           // The session id is supplied by the client, so guessing or editing it cannot move
           // the requester into another session. No value in this cookie grants a privileged
           // view; anything but the guest session is treated as dead.

@@ -93,8 +93,7 @@ public class SecurityMisconfigStealTokens extends HttpServlet {
         }
         String cookieValue = theToken.getValue();
 
-        log.debug("User Submitted Cookie: " + cookieValue);
-        log.debug("Stored Cookie Value  : " + userActualCookie);
+        log.debug("Comparing submitted cookie against stored session token");
 
         if (cookieValue.compareTo(userActualCookie) == 0) {
           // User is using their own Cookie: Not Complete
@@ -170,7 +169,7 @@ public class SecurityMisconfigStealTokens extends HttpServlet {
     }
     conn.close();
     if (!userToken.isEmpty()) {
-      log.debug("Found token: " + userToken);
+      log.debug("Found stored token for user");
     }
     return userToken;
   }
@@ -189,7 +188,7 @@ public class SecurityMisconfigStealTokens extends HttpServlet {
   public static boolean validToken(String userId, String token, String applicationRoot)
       throws SQLException {
     boolean validToken = false;
-    log.debug("Checking token:" + token);
+    log.debug("Checking submitted token against database");
     Connection conn =
         Database.getChallengeConnection(applicationRoot, "SecurityMisconfigStealToken");
     try {

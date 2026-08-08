@@ -89,7 +89,7 @@ public class CsrfChallengeSixGetToken extends HttpServlet {
             i++;
             htmlOutput += Encode.forHtml("\"" + rs.getString(1) + "\"") + " <br/>";
           }
-          log.debug("Returned " + i + " CSRF Tokens for ID: " + userId);
+          log.debug("Returned " + i + " CSRF token records for the authenticated user");
           conn.close();
         } catch (Exception e) {
           log.debug("Could not retrieve Challenge CSRF Tokens: " + e.toString());

@@ -80,13 +80,13 @@ public class BrokenCrypto3 extends HttpServlet {
               "i18n.servlets.challenges.insecureCryptoStorage.insecureCryptoStorage", locale);
       try {
         String userData = request.getParameter("userData");
-        log.debug("User Submitted - " + userData);
+        log.debug("Ciphertext submitted for decryption");
 
         log.debug("Decrypting user input");
         String decryptedUserData;
         try {
           decryptedUserData = decrypt(userData, encryptionKey);
-          log.debug("Decrypted to: " + decryptedUserData);
+          log.debug("Ciphertext decrypted successfully");
         } catch (GeneralSecurityException | IllegalArgumentException e) {
           // Cipher text that was not produced by this application does not decrypt. Report that
           // as an empty plain text rather than telling the submitter anything about why it

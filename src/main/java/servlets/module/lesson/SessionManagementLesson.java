@@ -80,7 +80,7 @@ public class SessionManagementLesson extends HttpServlet {
         }
         String htmlOutput = null;
         if (theCookie != null) {
-          log.debug("Cookie value: " + theCookie.getValue());
+          log.debug("Lesson tracking cookie present; validating");
 
           // The tracking cookie is written by the browser and records nothing the server ever
           // witnessed, so whatever it says the user did, it cannot mark the lesson as complete.

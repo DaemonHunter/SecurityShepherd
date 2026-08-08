@@ -91,10 +91,10 @@ public class SessionManagement7 extends HttpServlet {
           }
         }
         if (theCookie != null) {
-          log.debug("Cookie value: " + theCookie.getValue());
+          log.debug("Cookie present; decoding");
           byte[] decodedCookieBytes = Base64.decodeBase64(theCookie.getValue());
           String decodedCookie = new String(decodedCookieBytes, "UTF-8");
-          log.debug("Decoded Cookie: " + decodedCookie);
+          log.debug("Cookie decoded successfully");
           if (decodedCookie.equals("doNotReturnAnswers")) // Untampered Cookie
           {
             log.debug("Getting Challenge Parameters");
@@ -110,7 +110,7 @@ public class SessionManagement7 extends HttpServlet {
               subPass = (String) passObj;
             }
             log.debug("subName = " + subName);
-            log.debug("subPass = " + subPass);
+            log.debug("subPass submitted");
 
             String ApplicationRoot = getServletContext().getRealPath("");
             Connection conn =

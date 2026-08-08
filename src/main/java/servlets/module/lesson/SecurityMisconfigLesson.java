@@ -68,7 +68,7 @@ public class SecurityMisconfigLesson extends HttpServlet {
         String userName = request.getParameter("userName");
         log.debug("User Name - " + userName);
         String userPass = request.getParameter("userPass");
-        log.debug("User Pass - " + userName);
+        log.debug("Password submitted");
         // A name and password typed into this form identify nobody, because anybody can send any
         // pair. Signing in is the application's own login, and the role it establishes lives in
         // the session, so a shipped default credential no longer grants an administrator view.

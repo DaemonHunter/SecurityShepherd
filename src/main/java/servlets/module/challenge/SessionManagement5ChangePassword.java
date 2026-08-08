@@ -100,8 +100,8 @@ public class SessionManagement5ChangePassword extends HttpServlet {
           token = (String) tokenObj;
         }
         log.debug("userName = " + userName);
-        log.debug("newPass = " + newPass);
-        log.debug("token = " + token);
+        log.debug("New password submitted");
+        log.debug("Reset token submitted");
         // FIX: Validate the reset token against the server-side session value rather than
         // trusting a client-supplied base64 timestamp, which is trivially forgeable.
         // The token is still decoded for display parity, but acceptance requires the
@@ -152,7 +152,7 @@ public class SessionManagement5ChangePassword extends HttpServlet {
           log.debug("Could not decode token. Ending Servlet.");
           out.write(errorMessage);
         } else {
-          log.debug("Decoded Token = " + tokenTime);
+          log.debug("Reset token successfully decoded");
 
           if (serverTokenValid) {
             if (newPass.length() >= 12) {
@@ -163,7 +163,7 @@ public class SessionManagement5ChangePassword extends HttpServlet {
               Connection conn =
                   Database.getChallengeConnection(ApplicationRoot, "BrokenAuthAndSessMangChalFive");
               log.debug("Changing password for user: " + userName);
-              log.debug("Changing password to: " + newPass);
+              log.debug("Changing password in database");
               PreparedStatement callstmt;
 
               callstmt =
@@ -187,7 +187,7 @@ public class SessionManagement5ChangePassword extends HttpServlet {
 
               htmlOutput = "<p>" + bundle.getString("changePass.success") + "</p>";
             } else {
-              log.debug("Invalid password submitted: " + newPass);
+              log.debug("Invalid password submitted (too short)");
               htmlOutput = "<p>" + bundle.getString("changePass.failure") + "</p>";
             }
           } else {

@@ -87,10 +87,10 @@ public class SessionManagement1 extends HttpServlet {
         }
         String htmlOutput = null;
         if (theCookie != null) {
-          log.debug("Cookie value: " + theCookie.getValue());
+          log.debug("Cookie present; decoding");
           byte[] decodedCookieBytes = Base64.decodeBase64(theCookie.getValue());
           String decodedCookie = new String(decodedCookieBytes, "UTF-8");
-          log.debug("Decoded Cookie: " + decodedCookie);
+          log.debug("Cookie decoded successfully");
 
           // A cookie is supplied by the client and asserts nothing about who the requester is,
           // so it cannot put anyone in the administrator view. The decoded value is only

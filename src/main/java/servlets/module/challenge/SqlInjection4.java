@@ -80,7 +80,7 @@ public class SqlInjection4 extends HttpServlet {
         String theUserName = request.getParameter("theUserName");
         log.debug("User Submitted - " + theUserName);
         String thePassword = request.getParameter("thePassword");
-        log.debug("thePassword Submitted - " + thePassword);
+        log.debug("thePassword submitted");
         String ApplicationRoot = getServletContext().getRealPath("");
         log.debug("Servlet root = " + ApplicationRoot);
 

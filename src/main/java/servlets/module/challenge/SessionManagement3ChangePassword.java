@@ -88,7 +88,7 @@ public class SessionManagement3ChangePassword extends HttpServlet {
           subNewPass = (String) passNewObj;
         }
         log.debug("subName (from session) = " + subName);
-        log.debug("subPass = " + subNewPass);
+        log.debug("New password submitted");
 
         if (subNewPass.length() >= 6) {
           log.debug("Getting ApplicationRoot");
@@ -97,7 +97,7 @@ public class SessionManagement3ChangePassword extends HttpServlet {
           Connection conn =
               Database.getChallengeConnection(ApplicationRoot, "BrokenAuthAndSessMangChalThree");
           log.debug("Changing password for user: " + subName);
-          log.debug("Changing password to: " + subNewPass);
+          log.debug("Changing password in database");
           PreparedStatement callstmt;
 
           callstmt =
@@ -114,7 +114,7 @@ public class SessionManagement3ChangePassword extends HttpServlet {
 
           htmlOutput = "<p>" + bundle.getString("reset.password") + "</p>";
         } else {
-          log.debug("invalid password submitted: " + subNewPass);
+          log.debug("Invalid password submitted (too short)");
           htmlOutput = "<p>" + bundle.getString("reset.failed") + "</p>";
         }
         log.debug("Outputting HTML");

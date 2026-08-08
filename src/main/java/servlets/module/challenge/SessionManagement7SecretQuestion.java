@@ -133,7 +133,7 @@ public class SessionManagement7SecretQuestion extends HttpServlet {
 
         Object ansObj = request.getParameter("subAnswer");
         String subAns = Validate.validateParameter(ansObj, 35);
-        log.debug("subAnswer = " + subAns);
+        log.debug("Secret answer submitted");
         Object emailObj = request.getParameter("subEmail");
         String subEmail = Validate.validateParameter(emailObj, 60);
         log.debug("subEmail = " + subEmail);
@@ -271,11 +271,10 @@ public class SessionManagement7SecretQuestion extends HttpServlet {
           }
         }
         if (theCookie != null) {
-          log.debug("Cookie value: " + theCookie.getValue());
-          log.debug("Cookie value: " + theCookie.getValue());
+          log.debug("Cookie present; decoding");
           byte[] decodedCookieBytes = Base64.decodeBase64(theCookie.getValue());
           String decodedCookie = new String(decodedCookieBytes, "UTF-8");
-          log.debug("Decoded Cookie: " + decodedCookie);
+          log.debug("Cookie decoded successfully");
           if (decodedCookie.equals("doNotReturnAnswers")) // Untampered Cookie
           {
             // Question not translated as DB will only mark English answers as correct

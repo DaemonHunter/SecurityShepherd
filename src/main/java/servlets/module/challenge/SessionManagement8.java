@@ -88,13 +88,13 @@ public class SessionManagement8 extends HttpServlet {
         }
         String htmlOutput = new String();
         if (theCookie != null) {
-          log.debug("Cookie value: " + theCookie.getValue());
+          log.debug("Role cookie present; validating");
 
           // A cookie is supplied by the client and asserts nothing about who the requester is,
           // so no value in it can grant the super user view. Anything but the role this
           // application issued is a tampered cookie and is rejected.
           if (!theCookie.getValue().equals("LmH6nmbC")) {
-            log.debug("Tampered role cookie detected: " + theCookie.getValue());
+            log.debug("Tampered role cookie detected");
             htmlOutput += "<!-- " + bundle.getString("response.invalidRole") + " -->";
           } else {
             log.debug("No change to role cookie submitted");
